@@ -1,3 +1,2 @@
 streamlit 
-show_predict_page
-show_explore_page
+
