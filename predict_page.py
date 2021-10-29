@@ -14,7 +14,7 @@ L = data["model"]
 
 
 
-def show_predict_page_test():
+def show_predict_page():
     st.title("Final Grade Prediction")
     st.write("""### We need some information to predict your final grade""")
     
