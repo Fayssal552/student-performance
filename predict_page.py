@@ -14,9 +14,9 @@ L = data["model"]
 
 
 
-def show_predict_page():
-    st.title("Software Developer Salary Prediction")
-    st.write("""### We need some information to predict the salary""")
+def show_predict_page_test():
+    st.title("Final Grade Prediction")
+    st.write("""### We need some information to predict your final grade""")
     
     """
     reason = (
@@ -26,18 +26,26 @@ def show_predict_page():
         "other",
     )
     """
-    schoolsup = (
+    G=(
+        "class prepa",
+        "GM",
+        "GIAI",
+        "GI",
+
+    )
+    famrel=(
         "yes",
-        "No",
+        "no",
+    )
+    Prel=(
+        "yes",
+        "no",
     )
     famsup = (
         "yes",
         "No",
     )
-    paid = (
-        "yes",
-        "No",
-    )
+    
     activities = (
         "yes",
         "No",
@@ -46,46 +54,42 @@ def show_predict_page():
         "yes",
         "No",
     )
-    internet = (
-        "yes",
-        "No",
-    )
-    romantic = (
-        "yes",
-        "No",
-    )
     
-    #reason = st.selectbox("reason u chose this shool", reason)
-    schoolsup = st.selectbox("schoolsup", schoolsup)
-    famsup = st.selectbox("famsup", famsup)
-    paid = st.selectbox("paid", paid)
-    activities = st.selectbox("activities", activities)
-    higher = st.selectbox("higher", higher)
-    internet = st.selectbox("internet", internet)
-    romantic = st.selectbox("romantic", romantic)
+    #tzdt mais maghat2tr
+    G=st.selectbox("your field:",G)
 
-    Studytime = st.slider("weekly study time", 1, 4, 1)
-    traveltime = st.slider("nbr of hour trvl", 1, 4, 1)
-    famrel = st.slider("quality of family relationships", 1, 5, 1)
-    freetime = st.slider("free time after school", 1, 5, 1)
-    goout = st.slider("going out with friends", 1, 5, 1)
-    health = st.slider("current health status", 1, 5, 1)
+    famrel = st.selectbox("do you love your field? ",famrel)
+    traveltime = st.slider(" Home to school travel time : 1 si (<15min)- 2 (15 to 30min)- 3 (30min to 1h)- 4 (>1h)", 1, 4, 1)
+    Studytime = st.slider("weekly study time:1 si (<2h) 2-(2h to 5h) 3-(5h to 10h)4-(10h to 20h) 5-(>20h hacker) ", 1, 4, 1)
+    famsup = st.selectbox("family educional support", famsup)
+    paid = st.slider("Nbr of extra paid classes", 0,6,1)
+    #reason = st.selectbox("reason u chose this shool", reason)
+    activities = st.selectbox("activités parascolaires", activities)
+    higher = st.selectbox("visant à être un entrepreneur ou Non?", higher)
+    romantic = st.slider("with a romantic relationship( 0 : NONE  -1 : yes but not in same shool -2 : yes, in same chool", 0,2,1)
+
+    goout = st.slider("quality of Classmates relationships ( 1 - very low to 5 - very high ) ",1, 5, 1)
+    health = st.slider("current health status ( 1 - very bad to 5 - very good )", 1, 5, 1)
+
+    #tzado mais bla dat
+    Prel=st.selectbox("majorité d prof know u",Prel)
+    lkra=st.slider("kari ou nn :0(kari solo),1(kari m3a drari),2(makarich) ", 0, 2, 1)
 
     ok = st.button("Calculate final note")
     if ok:
-        X = np.array([ schoolsup, famsup,paid,
-        activities,higher,internet,romantic ,Studytime,traveltime, famrel,freetime,goout,health])
+        X = np.array([ famsup,
+        activities,higher,famrel,Prel,romantic ,paid,Studytime,traveltime,goout,health,lkra])
         
 
-        for i in range(7):
+        for i in range(5):
             
             if X[i] == "yes":
                 X[i]=1
             else:
                 X[i]=0
-        X=[int(X[j]) for j in range(13)]
+        X=[int(X[j]) for j in range(12)]
         X = np.array(X)
         X=X.reshape(1,-1)
 
         salary = L.predict(X)
-        st.subheader(f"The estimated salary is ${salary[0]:.2f}")
+        st.subheader(f"The Final Grade is {salary[0]:.2f}")
