@@ -60,7 +60,7 @@ def show_predict_page_test():
 
     famrel = st.selectbox("do you love your field? ",famrel)
     traveltime = st.slider(" Home to school travel time : 1 si (<15min)- 2 (15 to 30min)- 3 (30min to 1h)- 4 (>1h)", 1, 4, 1)
-    Studytime = st.slider("weekly study time:1 si (<2h) 2-(2h to 5h) 3-(5h to 10h)4-(10h to 20h) 5-(>20h hacker) ", 1, 4, 1)
+    Studytime = st.slider("weekly study time:1 si (<2h) 2-(2h to 5h) 3-(5h to 10h)4-(10h to 20h)  ", 1, 4, 1)
     famsup = st.selectbox("family educional support", famsup)
     paid = st.slider("Nbr of extra paid classes", 0,6,1)
     #reason = st.selectbox("reason u chose this shool", reason)
@@ -69,7 +69,7 @@ def show_predict_page_test():
     romantic = st.slider("with a romantic relationship( 0 : NONE  -1 : yes but not in same shool -2 : yes, in same chool", 0,2,1)
 
     goout = st.slider("quality of Classmates relationships ( 1 - very low to 5 - very high ) ",1, 5, 1)
-    health = st.slider("current health status ( 1 - very bad to 5 - very good )", 1, 5, 1)
+    health = st.slider("current health status(sport,healthy food ,sleep weel) ( 1 - very bad to 5 - very good )", 1, 5, 1)
 
     #tzado mais bla dat
     Prel=st.selectbox("majorité d prof know u",Prel)
